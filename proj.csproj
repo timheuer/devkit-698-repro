@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Nuget info -->
+  <PropertyGroup>
+    <PackageId>Blokyk.Foo</PackageId>
+    <Version>$([System.DateTime]::UtcNow.ToString(yyyy)).$([System.DateTime]::UtcNow.ToString(MMdd)).$([System.DateTime]::UtcNow.ToString(HHmm)).$([System.DateTime]::UtcNow.ToString(ss))</Version>
+    <Authors>Blokyk</Authors>
+  </PropertyGroup>
+
+  <!-- Packaging stuff -->
+  <PropertyGroup>
+    <NoWarn>$(NoWarn),NU5128</NoWarn> <!-- We only pack the generator for netstandard2.0 -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild> <!-- Generates the package on every build -->
+    <DevelopmentDependency>true</DevelopmentDependency> <!-- Projects referencing this won't have the package as a dependency -->
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking> <!-- We don't depend on anything after build -->
+    <PackRelease>true</PackRelease>
+    <PublishRelease>true</PublishRelease>
+  </PropertyGroup>
+</Project>
